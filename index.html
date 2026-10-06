@@ -76,7 +76,6 @@
     .progress-glow {
       box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
     }
-    /* Compact Mode Styles */
     body.compact-mode .task-card {
       padding: 0.35rem 0.6rem !important;
       margin-bottom: 0.25rem !important;
@@ -125,25 +124,21 @@
 
       <!-- Action Utilities -->
       <div class="flex flex-wrap items-center gap-2">
-        <!-- Compact Mode Toggle -->
         <button id="compactToggleBtn" onclick="toggleCompactMode()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center space-x-1.5 transition">
           <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
           <span id="compactBtnLabel">Compact: OFF</span>
         </button>
 
-        <!-- Manage Timers Visibility -->
         <button onclick="openTimerVisibilityModal()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center space-x-1.5 transition">
           <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
           <span>Manage Timers</span>
         </button>
 
-        <!-- Audio Alert Master Toggle -->
         <button id="audioToggleBtn" onclick="toggleAudioPermission()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center space-x-1.5 transition">
           <span id="audioIcon">🔔</span>
           <span id="audioLabel">Alerts: OFF</span>
         </button>
 
-        <!-- Squad Data (Import / Export) -->
         <div class="relative inline-block">
           <button onclick="toggleSquadDropdown()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-cyan-950/80 hover:bg-cyan-900 text-cyan-300 border border-cyan-500/40 flex items-center space-x-1.5 transition">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" /></svg>
@@ -220,7 +215,7 @@
           <div class="mt-2 text-[10px] text-slate-400">Resets Ascension Trial, Battlefield & Transcendence 1600+.</div>
         </div>
 
-        <!-- NEW: ABYSSAL ARTIFACT SIEGE CARD -->
+        <!-- ABYSSAL ARTIFACT SIEGE CARD -->
         <div id="timerCard_siege" class="hud-glass hud-glass-hover rounded-xl p-4 border border-red-500/30 relative group">
           <div class="flex items-start justify-between">
             <div class="flex items-center space-x-2">
@@ -354,7 +349,6 @@
             </h2>
             <span class="text-[10px] font-sans text-amber-300 uppercase tracking-widest font-semibold bg-amber-950/80 border border-amber-500/30 px-2 py-0.5 rounded">Private Notepad</span>
           </div>
-          <!-- Clear Privacy Notice -->
           <p class="text-xs text-amber-200/80 mt-1 flex items-center gap-1.5 font-medium">
             <span>🔒</span>
             <span><strong>Private to your device:</strong> Tasks and boss timers added here are saved only in your current browser. Squad members cannot see your entries.</span>
@@ -365,7 +359,6 @@
         </button>
       </div>
 
-      <!-- Boss List Container -->
       <div id="customBossesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         <!-- Rendered dynamically via JS -->
       </div>
@@ -390,44 +383,116 @@
         </div>
       </div>
 
-      <!-- Characters Grid -->
       <div id="odyleCharactersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <!-- Dynamically injected characters -->
       </div>
     </section>
 
-    <!-- SECTION 4: DAILIES & WEEKLIES CHECKLISTS -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- SECTION 4: DIRECTIVES & PROTOCOL (SPLIT COLUMNS) -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
 
-      <!-- DAILY CHECKLIST -->
-      <section class="hud-glass rounded-2xl p-5 border border-cyan-500/20 space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-          <div>
-            <h3 class="text-base font-cinzel font-bold text-white tracking-wider flex items-center gap-2">
-              <span class="text-cyan-400">☀️ Daily Directives</span>
-              <span class="text-xs font-sans text-cyan-300 font-semibold" id="dailyProgressFraction">(0/3)</span>
-            </h3>
-            <p class="text-xs text-slate-400">Hard resets daily at your local reset time</p>
+      <!-- LEFT COLUMN: DAILY DIRECTIVES + REWARDS GUIDE -->
+      <div class="space-y-6">
+
+        <!-- BOX 1: DAILY DIRECTIVES -->
+        <section class="hud-glass rounded-2xl p-5 border border-cyan-500/20 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div>
+              <h3 class="text-base font-cinzel font-bold text-white tracking-wider flex items-center gap-2">
+                <span class="text-cyan-400">☀️ Daily Directives</span>
+                <span class="text-xs font-sans text-cyan-300 font-semibold" id="dailyProgressFraction">(0/3)</span>
+              </h3>
+              <p class="text-xs text-slate-400">Hard resets daily at your local reset time</p>
+            </div>
+            <button onclick="resetCategoryTasks('daily')" class="text-xs text-slate-400 hover:text-cyan-300 underline font-medium">Uncheck All</button>
           </div>
-          <button onclick="resetCategoryTasks('daily')" class="text-xs text-slate-400 hover:text-cyan-300 underline font-medium">Uncheck All</button>
-        </div>
 
-        <!-- Progress bar -->
-        <div class="w-full bg-slate-900 rounded-full h-2 overflow-hidden border border-slate-700/50">
-          <div id="dailyProgressBar" class="bg-gradient-to-r from-cyan-500 to-sky-400 h-2 rounded-full transition-all duration-300 progress-glow" style="width: 0%"></div>
-        </div>
+          <!-- Progress bar -->
+          <div class="w-full bg-slate-900 rounded-full h-2 overflow-hidden border border-slate-700/50">
+            <div id="dailyProgressBar" class="bg-gradient-to-r from-cyan-500 to-sky-400 h-2 rounded-full transition-all duration-300 progress-glow" style="width: 0%"></div>
+          </div>
 
-        <div id="dailyTasksList" class="space-y-2.5 grid-tasks">
-          <!-- Dynamically populated daily items -->
-        </div>
-      </section>
+          <div id="dailyTasksList" class="space-y-2.5 grid-tasks">
+            <!-- Dynamically populated daily items -->
+          </div>
+        </section>
 
-      <!-- WEEKLY CHECKLIST -->
+        <!-- BOX 2: REWARDS GUIDE (NEW) -->
+        <section class="hud-glass rounded-2xl p-5 border border-emerald-500/20 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="flex items-center space-x-2">
+              <span class="text-emerald-400 text-lg">💎</span>
+              <div>
+                <h3 class="text-base font-cinzel font-bold text-white tracking-wider">Rewards Guide</h3>
+                <p class="text-xs text-slate-400">Duty quest priorities & point shop investments</p>
+              </div>
+            </div>
+            <span class="text-[10px] text-emerald-400 font-semibold uppercase tracking-widest bg-emerald-950/80 border border-emerald-500/30 px-2 py-0.5 rounded">Efficiency</span>
+          </div>
+
+          <div class="space-y-4 text-xs">
+
+            <!-- Sub-section: Duty Reward Priority -->
+            <div>
+              <h4 class="text-xs font-cinzel font-bold text-emerald-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <span>🎯 Duty Reward Priority</span>
+                <span class="text-[10px] font-sans text-slate-400 font-normal lowercase">(reroll until in first 2 slots)</span>
+              </h4>
+              <div class="space-y-1.5 bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                <div class="flex items-center gap-2">
+                  <span class="font-mono font-bold text-amber-300 bg-amber-950/80 border border-amber-500/40 px-1.5 py-0.5 rounded text-[10px]">1st</span>
+                  <span class="text-white font-semibold">Hidden Cube Key</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono font-bold text-cyan-300 bg-cyan-950/80 border border-cyan-500/40 px-1.5 py-0.5 rounded text-[10px]">2nd</span>
+                  <span class="text-slate-200">Shugo Key / Nightmare Ticket / Trial Ticket</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono font-bold text-indigo-300 bg-indigo-950/80 border border-indigo-500/40 px-1.5 py-0.5 rounded text-[10px]">3rd</span>
+                  <span class="text-slate-300">Soul Crystal / Special Crystal / Daily Dungeon Ticket</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="font-mono font-bold text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded text-[10px]">4th</span>
+                  <span class="text-slate-400">Etc. (Bound Kinah / Common Materials)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sub-section: Points Investment -->
+            <div>
+              <h4 class="text-xs font-cinzel font-bold text-cyan-300 uppercase tracking-wider mb-2">
+                💰 What to Purchase with Points?
+              </h4>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                <div class="bg-slate-900/80 p-2.5 rounded-lg border border-slate-800 flex flex-col justify-between">
+                  <span class="text-[10px] text-slate-400 uppercase tracking-wider">Shugo Festival</span>
+                  <span class="text-sm font-bold text-sky-300 mt-1 font-cinzel">Daeva</span>
+                  <span class="text-[10px] text-slate-400 mt-0.5">Points / Crystals</span>
+                </div>
+                <div class="bg-slate-900/80 p-2.5 rounded-lg border border-slate-800 flex flex-col justify-between">
+                  <span class="text-[10px] text-slate-400 uppercase tracking-wider">Nightmare</span>
+                  <span class="text-sm font-bold text-purple-300 mt-1 font-cinzel">Daeva</span>
+                  <span class="text-[10px] text-slate-400 mt-0.5">Points / Crystals</span>
+                </div>
+                <div class="bg-slate-900/80 p-2.5 rounded-lg border border-slate-800 flex flex-col justify-between">
+                  <span class="text-[10px] text-slate-400 uppercase tracking-wider">Abyss</span>
+                  <span class="text-sm font-bold text-amber-300 mt-1 font-cinzel">Stigma</span>
+                  <span class="text-[10px] text-slate-400 mt-0.5">Shards / Boxes</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN: WEEKLY PROTOCOL -->
       <section class="hud-glass rounded-2xl p-5 border border-amber-500/20 space-y-4">
         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
           <div>
             <h3 class="text-base font-cinzel font-bold text-white tracking-wider flex items-center gap-2">
-              <span class="text-amber-400">🛡️ Weekly Protocol</span>
+              <span class="text-amber-400">🛡️️ Weekly Protocol</span>
               <span class="text-xs font-sans text-amber-300 font-semibold" id="weeklyProgressFraction">(0/10)</span>
             </h3>
             <p class="text-xs text-slate-400">Resets every Wednesday at your local reset time</p>
@@ -724,10 +789,8 @@
 
   <!-- JAVASCRIPT APPLICATION CORE -->
   <script>
-    // Storage Keys
-    const STORAGE_KEY = 'aion2_tracker_storage_v6';
+    const STORAGE_KEY = 'aion2_tracker_storage_v7';
 
-    // Default Initial State
     const defaultData = {
       compactMode: false,
       audioEnabled: false,
@@ -856,7 +919,6 @@
       ]
     };
 
-    // Load or initialize state
     let state = loadState();
     let currentAlarmTargetKey = null;
 
@@ -880,7 +942,6 @@
       }
     }
 
-    // Web Audio Sound Synthesizer
     let audioCtx = null;
     function playChime(type = 'click') {
       if (!state.audioEnabled) return;
@@ -949,7 +1010,6 @@
       }
     }
 
-    // Compact Mode Switch
     function toggleCompactMode() {
       state.compactMode = !state.compactMode;
       applyCompactMode();
@@ -968,7 +1028,6 @@
       }
     }
 
-    // Copy to clipboard helper
     function copyToClipboard(text, btnElement) {
       navigator.clipboard.writeText(text).then(() => {
         const originalText = btnElement.textContent;
@@ -981,7 +1040,6 @@
       });
     }
 
-    // Squad Dropdown
     function toggleSquadDropdown() {
       const d = document.getElementById('squadDropdown');
       d.classList.toggle('hidden');
@@ -994,7 +1052,6 @@
       }
     });
 
-    // Reset Protocols Check (07:00 UTC Daily & Wednesday 07:00 UTC)
     function checkResetCycles() {
       const now = new Date();
       
@@ -1011,7 +1068,7 @@
       }
 
       let prevWeekly = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 7, 0, 0, 0));
-      const dayOfWeek = prevWeekly.getUTCDay(); // 3 = Wednesday
+      const dayOfWeek = prevWeekly.getUTCDay();
       const daysSinceWed = (dayOfWeek + 7 - 3) % 7;
       prevWeekly.setUTCDate(prevWeekly.getUTCDate() - daysSinceWed);
       if (now.getTime() < prevWeekly.getTime()) {
@@ -1026,11 +1083,10 @@
       }
     }
 
-    // TIME & COUNTDOWN TICKER ENGINE
     function updateTimers() {
       const now = new Date();
 
-      // 1. Daily Reset (Next 07:00 UTC)
+      // 1. Daily Reset
       let nextDaily = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 7, 0, 0, 0));
       if (now.getTime() >= nextDaily.getTime()) {
         nextDaily.setUTCDate(nextDaily.getUTCDate() + 1);
@@ -1042,9 +1098,9 @@
       document.getElementById('dailyLocalTimeDisplay').textContent = `${dailyLocalFormatted} (Your Local)`;
       checkTimerAlarm('daily', dailyDiff);
 
-      // 2. Weekly Reset (Next Wednesday 07:00 UTC)
+      // 2. Weekly Reset
       let nextWeekly = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 7, 0, 0, 0));
-      const currentDay = nextWeekly.getUTCDay(); // 3 = Wed
+      const currentDay = nextWeekly.getUTCDay();
       let daysUntilWed = (3 - currentDay + 7) % 7;
       if (daysUntilWed === 0 && now.getTime() >= nextWeekly.getTime()) {
         daysUntilWed = 7;
@@ -1057,17 +1113,17 @@
       document.getElementById('weeklyLocalTimeDisplay').textContent = `${weeklyLocalFormatted} (Your Local)`;
       checkTimerAlarm('weekly', weeklyDiff);
 
-      // 3. Abyssal Artifact Siege (Mon / Thu / Sat @ 8:00 PM CST -> 02:00 UTC Tuesday, Friday, Sunday)
+      // 3. Abyssal Siege
       updateSiegeTimer(now);
 
-      // 4. Shugo Festival (Next :00 top of the hour)
+      // 4. Shugo Festival
       let nextShugo = new Date(now);
       nextShugo.setMinutes(60, 0, 0);
       const shugoDiff = nextShugo.getTime() - now.getTime();
       document.getElementById('shugoCountdown').textContent = formatMS(shugoDiff);
       checkTimerAlarm('shugo', shugoDiff);
 
-      // 5. Dimensional Invasion (Next :30 mark of the hour)
+      // 5. Dimensional Invasion
       let nextDim = new Date(now);
       if (now.getMinutes() >= 30) {
         nextDim.setHours(now.getHours() + 1, 30, 0, 0);
@@ -1078,7 +1134,7 @@
       document.getElementById('dimensionalCountdown').textContent = formatMS(dimDiff);
       checkTimerAlarm('dimensional', dimDiff);
 
-      // 6. Spacetime Rift (3-hour cadence: 00:00, 03:00, 06:00, 09:00, 12:00, 15:00, 18:00, 21:00 UTC)
+      // 6. Spacetime Rift
       const riftHours = [0, 3, 6, 9, 12, 15, 18, 21];
       const curHour = now.getUTCHours();
       let nextRiftHour = riftHours.find(h => h > curHour);
@@ -1100,20 +1156,14 @@
       document.getElementById('riftCountdown').textContent = formatHMS(riftDiff);
       checkTimerAlarm('rift', riftDiff);
 
-      // 7. Scheduled World Boss Radar (Watcher Kaira / Siege)
+      // 7. World Boss Radar
       updateWorldBossRadar(now);
 
-      // 8. Personal Field Ops / Custom Bosses Update
+      // 8. Custom Bosses
       updateCustomBossesUI();
     }
 
-    // Abyssal Artifact Siege Calculation (Mon/Thu/Sat 8:00 PM CST = 02:00 UTC Tue/Fri/Sun)
     function updateSiegeTimer(now) {
-      // CST is UTC-6 (or UTC-5 during CDT). We calculate the exact next UTC target:
-      // Mon 8pm CST = Tue 02:00 UTC
-      // Thu 8pm CST = Fri 02:00 UTC
-      // Sat 8pm CST = Sun 02:00 UTC
-      // Days in UTC: 2 (Tue), 5 (Fri), 0 (Sun)
       const targetUTCSchedules = [
         { day: 2, hour: 2, name: 'Mon 8pm CST' },
         { day: 5, hour: 2, name: 'Thu 8pm CST' },
@@ -1131,7 +1181,6 @@
         return { targetDate: d, name: sch.name };
       });
 
-      // Sort to get closest upcoming date
       candidateDates.sort((a, b) => a.targetDate.getTime() - b.targetDate.getTime());
       const nextSiege = candidateDates[0];
       const siegeDiff = nextSiege.targetDate.getTime() - now.getTime();
@@ -1139,13 +1188,11 @@
       const countdownEl = document.getElementById('siegeCountdown');
       const badgeEl = document.getElementById('siegeNextBadge');
       
-      // Check if within 30 minutes queue window or active
       const thirtyMinWarning = 30 * 60 * 1000;
       if (siegeDiff <= thirtyMinWarning && siegeDiff > 0) {
         badgeEl.textContent = 'QUEUE OPEN (GET IN NOW)';
         badgeEl.className = 'text-[10px] font-bold px-2 py-0.5 rounded bg-rose-900 text-rose-300 border border-rose-500/50 animate-pulse';
       } else {
-        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         badgeEl.textContent = nextSiege.targetDate.toLocaleDateString([], { weekday: 'short' });
         badgeEl.className = 'text-[10px] font-mono text-slate-300 font-semibold';
       }
@@ -1174,7 +1221,6 @@
       checkTimerAlarm('worldboss', wbDiff);
     }
 
-    // Helper Formatters
     function formatHMS(ms) {
       if (ms < 0) ms = 0;
       const totalSec = Math.floor(ms / 1000);
@@ -1202,7 +1248,6 @@
       return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
     }
 
-    // Alarm checking system
     const triggeredAlarmFlags = {};
     function checkTimerAlarm(key, diffMs) {
       if (!state.audioEnabled || !state.timerAlarms[key]) return;
@@ -1246,7 +1291,6 @@
       document.getElementById('alarmBanner').classList.add('hidden');
     }
 
-    // TIMER VISIBILITY ENGINE
     function hideTimer(key) {
       state.timerVisibility[key] = false;
       applyTimerVisibility();
@@ -1299,7 +1343,6 @@
       saveState();
     }
 
-    // POPOUT TIMER MINI-HUD
     function popoutTimer(key) {
       const titles = {
         daily: 'Daily Reset',
@@ -1356,7 +1399,6 @@
       `);
     }
 
-    // ALARM MODAL LOGIC
     function openAlarmModal(key) {
       currentAlarmTargetKey = key;
       const modal = document.getElementById('alarmSettingsModal');
@@ -1391,7 +1433,6 @@
       closeAlarmModal();
     }
 
-    // ODYLE MULTI-CHARACTER ENGINE & REGEN CALCULATOR
     function renderOdyleCharacters() {
       const container = document.getElementById('odyleCharactersGrid');
       container.innerHTML = '';
@@ -1492,7 +1533,6 @@
       }
     }
 
-    // Odyle Recovery Calculator Modal
     function openOdyleCalculatorModal() {
       document.getElementById('odyleCalcModal').classList.remove('hidden');
       runOdyleCalculation();
@@ -1516,7 +1556,6 @@
         : targetDate.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' }) + ' ' + targetDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     }
 
-    // PERSONAL FIELD OPS & HUNT LOG (LOCAL DEVICE ONLY)
     function renderCustomBosses() {
       const container = document.getElementById('customBossesContainer');
       container.innerHTML = '';
@@ -1639,7 +1678,6 @@
       document.getElementById('bossListModal').classList.add('hidden');
     }
 
-    // CHECKLIST & TASKS ENGINE (CLEAN CHECKBOXES)
     function renderTasks() {
       renderCategoryTasks('daily', state.dailyTasks, document.getElementById('dailyTasksList'), document.getElementById('dailyProgressBar'), document.getElementById('dailyProgressFraction'));
       renderCategoryTasks('weekly', state.weeklyTasks, document.getElementById('weeklyTasksList'), document.getElementById('weeklyProgressBar'), document.getElementById('weeklyProgressFraction'));
@@ -1709,7 +1747,6 @@
       renderTasks();
     }
 
-    // EXPORT / IMPORT ENGINE
     function exportData() {
       const str = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
       const a = document.createElement('a');
@@ -1757,7 +1794,6 @@
       });
     }
 
-    // INITIALIZATION RUNNER
     function initApp() {
       applyCompactMode();
       updateAudioBtnUI();
